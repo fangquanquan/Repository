@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+     profiles: dev
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+---
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8759/eureka/,http://${eureka.instance.hostname}:8760/eureka/,http://${eureka.instance.hostname}:8761/eureka/
+server:
+  port: 8759
+
+---
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8759/eureka/,http://${eureka.instance.hostname}:8760/eureka/,http://${eureka.instance.hostname}:8761/eureka/
+server:
+  port: 8760
+
+---
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8759/eureka/,http://${eureka.instance.hostname}:8760/eureka/,http://${eureka.instance.hostname}:8761/eureka/
+server:
+  port: 8761
+
+---
+spring:
+  profiles: docker
+eureka:
+  instance:
+    hostname: localhost
+
+---
+spring:
+     application:
+       name: eureka-server
