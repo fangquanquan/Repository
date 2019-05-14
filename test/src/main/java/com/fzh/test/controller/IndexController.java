@@ -12,7 +12,7 @@ public class IndexController {
     private int port;
 
     @RequestMapping("/{value}")
-    public String getPort(@PathVariable("value") String value){
-        return "hello" + "port=" +port +"value="+value;
+    public String getPort(@PathVariable("value") String value) {
+        return "hello" + "port=" + port + "value=" + value;
     }
 }
