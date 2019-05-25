@@ -17,10 +17,10 @@ spring:
   profiles: peer1
 eureka:
   instance:
-    hostname: localhost
+    hostname: localhost-1
   client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:8759/eureka/,http://${eureka.instance.hostname}:8760/eureka/,http://${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://localhost-2:8760/eureka/,http://localhost-3:8761/eureka/
 server:
   port: 8759
 
@@ -29,10 +29,10 @@ spring:
   profiles: peer2
 eureka:
   instance:
-    hostname: localhost
+    hostname: localhost-2
   client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:8759/eureka/,http://${eureka.instance.hostname}:8760/eureka/,http://${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://localhost-1:8759/eureka/,http://localhost-3:8761/eureka/
 server:
   port: 8760
 
@@ -41,10 +41,10 @@ spring:
   profiles: peer3
 eureka:
   instance:
-    hostname: localhost
+    hostname: localhost-3
   client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:8759/eureka/,http://${eureka.instance.hostname}:8760/eureka/,http://${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://localhost-1:8759/eureka/,http://localhost-2:8760/eureka/
 server:
   port: 8761
 
